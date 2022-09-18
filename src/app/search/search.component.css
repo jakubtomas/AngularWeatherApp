@@ -1,0 +1,132 @@
+aside {
+  position: absolute;
+  background-color: #fff;
+  min-height: 60vh;
+  border-radius: 25px 25px 0px 0px;
+  width: 100%;
+  top: 50px;
+}
+
+.location {
+  margin-top: 19px;
+}
+
+.location h1 {
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #999999;
+}
+
+.search-bar {
+  display: grid;
+  justify-content: center;
+  margin-top: 27px;
+}
+
+form {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  box-sizing: border-box;
+  height: 40px;
+  width: 90vw;
+  padding: 6px 10px;
+
+  background: #F3F3F3;
+  border: none;
+  border-radius: 4px;
+
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: black;
+
+}
+
+::placeholder {
+  font-style: italic;
+  color: #9F9F9F;
+}
+
+
+/* SVG LOCATION */
+.svg {
+  position: relative;
+}
+
+svg {
+  color: #fff;
+  fill: currentColor;
+  width: 24px;
+  height: 16px;
+  padding: 10px;
+  top: -35px;
+  position: absolute;
+  right: 0;
+}
+
+
+.search-items {
+  width: 90vw;
+  margin: 0 auto;
+  margin-top: 34px;
+}
+
+/*  TABLE SEARCH ITEMS  */
+
+th {
+  padding-top: 10px;
+}
+
+table {
+  width: 90%;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+}
+
+.city {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.05em;
+  color: #444444;
+  text-align-last: left;
+}
+
+.temperature {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+  color: #666666;
+}
+
+
+@media only screen and (min-width: 600px) {
+  .city{
+    font-size: 22px;
+  }
+  .temperature{
+    font-size: 20px;
+  }
+}
