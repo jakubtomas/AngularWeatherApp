@@ -5,16 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InformationComponent } from './information/information.component';
 import { SearchComponent } from './search/search.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ToCelsiumPipe } from './pipes/to-celsium.pipe';
+import { InfoBoxComponent } from './information/info-box/info-box/info-box.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     InformationComponent,
-    SearchComponent
+    SearchComponent,
+    ToCelsiumPipe,
+    InfoBoxComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    //ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

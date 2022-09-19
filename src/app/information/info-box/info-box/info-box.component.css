@@ -1,0 +1,69 @@
+.box {
+  text-align: center;
+  width: 25vw;
+  height: 26vw;
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-information img {
+  height: 6vw;
+  width: 6vw;
+}
+
+.detail-information p {
+  margin: 12px 0 4px 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: -0.05em;
+
+  color: #444444;
+}
+
+.detail-information i {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 10px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: 0.1em;
+
+  color: #999999;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .detail-information img {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+
+@media only screen and (min-width: 600px) {
+  .detail-information p {
+    font-size: 20px;
+  }
+
+  .detail-information i {
+    font-size: 14px;
+  }
+
+  .next-temperature p,
+  svg {
+    font-size: 22px;
+  }
+
+  .next-temperature svg {
+    width: 10px;
+    height: auto;
+
+  }
+}

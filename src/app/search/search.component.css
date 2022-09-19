@@ -111,6 +111,10 @@ table {
   color: #444444;
   text-align-last: left;
 }
+.city:hover{
+  cursor: pointer;
+  font-weight: 500;
+}
 
 .temperature {
   font-style: normal;

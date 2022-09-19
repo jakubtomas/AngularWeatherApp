@@ -48,6 +48,8 @@ aside {
   font-weight: 500;
   font-style: normal;
   line-height: 19px;
+  text-decoration: none;
+  color: rgba(13, 160, 234, 1);
 }
 
 
@@ -84,18 +86,14 @@ aside {
   width: 25vw;
   height: 26vw;
   margin: 0 auto;
-  /* border: 1px solid red; */
-
   padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid blue;
-
 }
 
 .inside {
-  border: 1px solid green;
+  /* border: 1px solid green; */
 }
 
 .sunny {
@@ -128,7 +126,7 @@ aside {
   line-height: 29px;
 }
 
-.down-Temperature {
+.down-temperature {
   margin-top: 12px;
 }
 
@@ -151,7 +149,7 @@ aside {
 /* DETAIL INFORMATION  */
 
 .detail-information {
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
 }
 
 .detail-information img {
@@ -183,6 +181,12 @@ aside {
   color: #999999;
 }
 
+
+
+
+
+
+
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -190,7 +194,7 @@ aside {
 
 .item {
   width: 33.33%;
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   padding: 20px;
   font-size: 30px;
   text-align: center;
