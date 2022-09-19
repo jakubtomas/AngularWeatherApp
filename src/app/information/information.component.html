@@ -1,7 +1,7 @@
 <aside *ngIf="city">
 
   <div class="information">
-    <p class="date">Weeednesday, 08 Oct 2020 | 4:30PM</p>
+    <p class="date">{{date}}</p>
     <div class="location">
       <a class="city" [routerLink]="['/']">{{city.name}} , {{city.sys.country}}
 
@@ -22,7 +22,7 @@
       <div class="box">
         <div class="inside">
           <img src="../assets/cloud-sun.svg" alt="humidity SVG" />
-          <p class="sunny">Sunny</p>
+          <p class="sunny">{{city.weather[0].main}}</p>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
     <div class="grid-item">
       <div class="box">
         <div class="temperature">
-          <p>{{city.main.temp |toCelsium}} </p> <span>&#8451;</span>
+          <p class="main-temperature-number">{{city.main.temp |toCelsium }} </p> <span>&#8451;</span>
         </div>
       </div>
     </div>
@@ -61,166 +61,69 @@
     <!-- 2 ROW -->
 
     <div class="grid-item">
-      <!-- <div class="box">
-        <div class="detail-information">
-          <img src="../assets/humidity.svg" alt="humidity SVG" />
-          <p> 49 %</p>
-          <i>Humidity </i>
-
-        </div>
-      </div> -->
       <info-box [src]="'../assets/humidity.svg'" [property]="city.main.humidity + '%'" [nameProperty]="'Humidity'">
       </info-box>
     </div>
 
     <div class="grid-item">
-      <!-- <div class="box">
-        <div class="detail-information">
-          <img src="../assets/barometer.svg" alt="Barometer Svg" />
-
-          <p> 1,007mBar</p>
-          <i>Pressure </i>
-
-        </div>
-      </div> -->
-
       <info-box [src]="'../assets/barometer.svg'" [property]="city.main.pressure + ' mBar'" [nameProperty]="'Pressure'">
       </info-box>
-
-
     </div>
 
-
-
     <div class="grid-item">
-      <!-- <div class="box">
-        <div class="detail-information">
-          <img src="../assets/wind.svg" alt="Wind SVG" />
-
-          <p>23 km/h</p>
-          <i>Wind </i>
-
-        </div>
-      </div> -->
-
       <info-box [src]="'../assets/wind.svg'" [property]="city.wind.speed + ' km/h'" [nameProperty]="'Wind'">
       </info-box>
     </div>
 
     <!-- 3 ROW -->
     <div class="grid-item">
-      <!-- <div class="box">
+      <div class="box">
         <div class="detail-information">
           <img src="../assets/008-sunrise.svg" alt="Sand Clock SVG" />
-
-          <p>6:03 AM</p>
+          <p>{{city.sys.sunrise | formatAmPm}}</p>
           <i>Sunrise</i>
-
         </div>
-      </div> -->
-
-      <info-box [src]="'../assets/008-sunrise.svg'" [property]="city.sys.sunrise + ' AM'" [nameProperty]="'Sunrise'">
-      </info-box>
+      </div>
     </div>
 
     <div class="grid-item">
-      <!-- <div class="box">
+      <div class="box">
         <div class="detail-information">
           <img src="../assets/Sunset.svg" alt="Sand Clock SVG" />
-
-          <p>7:05 PM</p>
+          <p>{{city.sys.sunset | formatAmPm}}</p>
           <i>Sunset </i>
-
         </div>
-      </div> -->
-
-      <info-box [src]="'../assets/Sunset.svg'" [property]="city.sys.sunset + 'PM'" [nameProperty]="'Sunset'">
-      </info-box>
+      </div>
     </div>
 
 
     <div class="grid-item">
-      <!-- <div class="box">
+      <div class="box">
         <div class="detail-information">
           <img src="../assets/sand-clock.svg" alt="Sand Clock SVG" />
-
-          <p>13h 1m</p>
+          <p>{{city.sys.sunset - city.sys.sunrise | formatDate}} H</p>
           <i>Day Time </i>
-
         </div>
-      </div> -->
-
-
-      <info-box [src]="'../assets/sand-clock.svg'" [property]="(city.sys.sunset - city.sys.sunrise) + 'PM'"
-        [nameProperty]="'Daytime'">
-      </info-box>
+      </div>
     </div>
-
 
     <!-- 4 ROW LAST ROW -->
     <div class="grid-item br-16px">
-      <!-- <div class="box">
-        <div class="detail-information">
-          <img src="../assets/Last row icons/007-sunny-1.svg" alt="Sunny SVG" />
-
-          <p>13h 1m</p>
-          <i>Day Time </i>
-
-        </div>
-      </div> -->
-
-      <info-box [src]="'../assets/Last row icons/007-sunny-1.svg'" [property]="'Thu , 09'" [nameProperty]="'Daytime'">
+      <info-box [src]="'../assets/Last row icons/007-sunny-1.svg'" [property]="'Thu , 09'" [maxTemp]="16"
+        [minTemp]="12">
       </info-box>
     </div>
 
     <div class="grid-item br-16px">
-      <!-- <div class="box">
-        <div class="detail-information">
-          <img src="../assets/Last row icons/014-cloudy-2.svg" alt="Cloudy SVG" />
-
-          <p>13h 1m</p>
-          <i>Day Time </i>
-        </div>
-      </div> -->
-
       <info-box [src]="'../assets/Last row icons/014-cloudy-2.svg'" [property]="'Fri , 10 '" [maxTemp]="16"
         [minTemp]="12">
       </info-box>
     </div>
 
     <div class="grid-item br-16px">
-      <!-- <div class="box">
-        <div class="detail-information">
-          <img src="../assets/Last row icons/016-hazy.svg" alt="Hazy SVG" />
-
-          <p>13h 1m</p>
-          <i> 35 <span>&#8451;</span>
-
-            <svg class="arrowUp" width="5" height="8" viewBox="0 0 5 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M4.14647 2.8535L3 1.70703V7.49998C3 7.77636 2.77636 8 2.49999 8C2.22361 8 1.99997 7.77636 1.99997 7.49998V1.70703L0.853509 2.8535C0.658181 3.04883 0.341776 3.04883 0.146496 2.8535C-0.0488319 2.65817 -0.0488319 2.34177 0.146496 2.14648L2.1459 0.147079C2.19216 0.100672 2.24757 0.0638757 2.30911 0.0384226C2.37019 0.0131569 2.43497 -1.52588e-05 2.50004 -1.52588e-05C2.5651 -1.52588e-05 2.62988 0.0131569 2.69096 0.0384226C2.7525 0.0638757 2.80791 0.100672 2.85417 0.147079L4.85357 2.14648C5.0489 2.34181 5.0489 2.65822 4.85357 2.8535C4.6582 3.04883 4.3418 3.04883 4.14647 2.8535Z"
-                fill="#AAAAAA" />
-            </svg>
-
-
-            34 <span>&#8451;</span>
-            <svg class="arrowDown" width="5" height="8" viewBox="0 0 5 8" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M4.14647 5.1465L3 6.29297V0.500015C3 0.22364 2.77636 0 2.49999 0C2.22361 0 1.99997 0.22364 1.99997 0.500015V6.29297L0.853509 5.1465C0.658181 4.95117 0.341776 4.95117 0.146496 5.1465C-0.0488319 5.34183 -0.0488319 5.65823 0.146496 5.85352L2.1459 7.85292C2.19216 7.89933 2.24757 7.93612 2.30911 7.96158C2.37019 7.98684 2.43497 8.00002 2.50004 8.00002C2.5651 8.00002 2.62988 7.98684 2.69096 7.96158C2.7525 7.93612 2.80791 7.89933 2.85417 7.85292L4.85357 5.85352C5.0489 5.65819 5.0489 5.34178 4.85357 5.1465C4.6582 4.95117 4.3418 4.95117 4.14647 5.1465Z"
-                fill="#AAAAAA" />
-            </svg>
-          </i>
-        </div>
-      </div> -->
-
-
       <info-box [src]="'../assets/Last row icons/016-hazy.svg'" [property]="'Sat , 11'" [maxTemp]="16" [minTemp]="12">
       </info-box>
-
-
     </div>
-
 
   </div>
 </aside>

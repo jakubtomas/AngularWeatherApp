@@ -1,12 +1,11 @@
 <aside>
   <div class="location">
     <h1>Location</h1>
+
     <div class="search-bar">
-
-
       <form role="search" id="form" #searchForm="ngForm">
         <div class="box">
-          <input type="text" name="city" placeholder="Search city" (keyup)="onKeyUp(searchForm.value)" ngModel>
+          <input type="text" name="city" placeholder="Search city" [(ngModel)]="filterText">
           <div class="svg">
             <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -17,28 +16,16 @@
 
         </div>
       </form>
-
-
-
     </div>
+
     <div class="search-items">
-
       <table>
-        <tr *ngFor="let item of data">
-          <th class="city" (click)="showDetails(item)">{{item.name}}</th>
-          <th class="temperature">{{item.main.temp | toCelsium}} °C</th>
+        <tr *ngFor="let city of data | filterCities:filterText">
+          <th class="city" (click)="showDetails(city.coord)">{{city.name}}</th>
+          <th class="temperature">{{city.main.temp | toCelsium}} °C</th>
         </tr>
-
-        <!-- <tr>
-          <th class="city">Peter</th>
-          <th class="temperature">22 °C</th>
-        </tr> -->
-
-
-
-        <!-- click on th  run functio with router to main component with data  -->
       </table>
-
     </div>
   </div>
+
 </aside>

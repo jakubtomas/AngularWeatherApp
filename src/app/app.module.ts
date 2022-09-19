@@ -9,13 +9,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToCelsiumPipe } from './pipes/to-celsium.pipe';
 import { InfoBoxComponent } from './information/info-box/info-box/info-box.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe';
+import { ConvertDatePipe } from './pipes/convert-date.pipe';
+import { FormatDatePipe } from './pipes/format-date.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     InformationComponent,
     SearchComponent,
     ToCelsiumPipe,
-    InfoBoxComponent
+    InfoBoxComponent,
+    FilterPipe,
+    ConvertDatePipe,
+    FormatDatePipe
   ],
   imports: [
     BrowserModule,

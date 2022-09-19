@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class ToCelsiumPipe implements PipeTransform {
 
   transform(temperatureKelvin: number, argument: number = 0): string {
-    return (temperatureKelvin - 273.15).toFixed(argument);
+    return (temperatureKelvin - 273.15).toFixed(argument) + ' ';
   }
 
 }

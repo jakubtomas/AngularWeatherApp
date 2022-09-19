@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { WeatherService } from '../services/weather.service';
-import { catchError, map, mapTo, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { WeatherData } from '../interfaces/weather';
+import { Forecast } from '../interfaces/forecast';
 
 @Component({
   selector: 'app-information',
@@ -14,60 +14,33 @@ export class InformationComponent implements OnInit {
   constructor(private weatherService: WeatherService,
     private route: ActivatedRoute) { }
 
-  public city: any;
+  public city: WeatherData | undefined;
   public cityForecast: any;
+  date: string = ''
+  presentTime: Date = new Date()
+
 
   ngOnInit(): void {
-    /*QUEra pramter */
-    this.route.queryParams.subscribe((param: Params) => {
+    this.date = this.presentTime.toDateString() + ' ' + this.presentTime.toLocaleTimeString();
 
+    this.route.queryParams.subscribe((param: Params) => {
       if (param) {
         this.getCityWeatherData(param.lat, param.lon)
         // this.getDaysForecast(param.lat, param.lon)   // api is not free
       }
-    }, error => {
-      console.log('you got error ');
-      console.log(error);
     });
   }
 
-  getCityWeatherData(lat: number, lon: number) {
-    this.weatherService.getCityData(lat, lon).subscribe((value) => {
-      this.city = value;
-      console.log(this.city);
-
+  getCityWeatherData(lat: number, lon: number): void {
+    this.weatherService.getCityData(lat, lon).subscribe((city: WeatherData) => {
+      this.city = city;
     })
   }
 
-  getDaysForecast(lat: number, lon: number) {
-    this.weatherService.getCityForecast(lat, lon, 3).subscribe((forecast) => {
+  getDaysForecast(lat: number, lon: number): void {
+    this.weatherService.getCityForecast(lat, lon, 3).subscribe((forecast: Forecast) => {
       this.cityForecast = forecast;
     })
   }
-
-
-  // of(1, 2, 3).pipe(
-  //   tap((value) => {
-  //     console.log(value);
-
-  //   })
-  // ).subscribe()
-
-  // this.weatherService.data.subscribe((value) => {
-  //   console.log('omg data vlaue asd;flkjasdf;lk');
-  //   console.log(value);
-
-  // })
 }
-
-  // poslem parameter a vyfiltrujem na zaklade toho
-
-
-  // getWeatherData() {
-  //   this.weatherService.data.subscribe((value) => {
-
-  //     console.log('dostal som data');
-  //     console.log(value);
-  //   })
-  // }
 

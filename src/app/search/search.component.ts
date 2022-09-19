@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Coord, WeatherData } from '../interfaces/weather';
 import { WeatherService } from '../services/weather.service';
 
 @Component({
@@ -12,74 +13,25 @@ export class SearchComponent implements OnInit {
   constructor(private weatherService: WeatherService,
     private router: Router) { }
 
+  filterText: string = '';
+
   ngOnInit(): void {
-    // this.weatherService.getWeatherCities()
-    //this.getCitiesData()
     this.getCities()
   }
 
-  public data: any = []
-
-
-  onKeyUp(event: any) {
-    console.log(event);
-
-    console.log('--------');
-
-    const value = 'Kosice'
-    console.log(value.search(event));
-
-    //const result = this.data.filter((oneValue: any) => oneValue.name.includes(event))
-    let arrayNew: object[] = []
-
-    for (let i = 0; i < this.data.length; i++) {
-      let data = this.data[i];
-      console.log(data.name);
-
-      if (data.name.includes(event)) {
-        arrayNew.push(data)
-      }
-    }
-
-    console.log(arrayNew);
-    //console.log(result);
-
-  }
+  public data: WeatherData[] = [];
 
   getCities(): void {
-    console.log('call function get cities ');
-
-
-    this.weatherService.getData().subscribe((data) => {
-      console.log('resultttt ');
-      console.log(data);
-
+    this.weatherService.getCitiesData().subscribe((data) => {
       this.data = data
 
-    }, error => {
-      console.log('you got error ');
-      console.log(error);
     });
   }
 
+  showDetails(coord: Coord): void {
 
-
-  // getCitiesData(): void {
-  //   console.log('volam functions');
-
-  //   this.weatherService.data.subscribe((value) => {
-  //     this.data = value;
-
-  //     console.log('dostal som data');
-  //     console.log(value);
-
-  //   })
-  // }
-
-
-  showDetails(city: any) {
     this.router.navigate(['/details'],
-      { queryParams: { lat: city.coord.lat, lon: city.coord.lon } });
+      { queryParams: { lat: coord.lat, lon: coord.lon } });
   }
 
 

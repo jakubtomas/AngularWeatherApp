@@ -74,8 +74,6 @@ aside {
 }
 
 .grid-item {
-  /* background-color: rgba(255, 255, 255, 0.8); */
-  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   margin: 10px;
   text-align: center;
 }
@@ -90,10 +88,6 @@ aside {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.inside {
-  /* border: 1px solid green; */
 }
 
 .sunny {
@@ -122,7 +116,6 @@ aside {
   color: rgba(102, 102, 102, 1);
   top: 10px;
   position: relative;
-
   line-height: 29px;
 }
 
@@ -144,13 +137,11 @@ aside {
 .arrowDown {
   margin-top: 5px;
 }
-
+.main-temperature-number{
+  margin-right: 4px;
+}
 
 /* DETAIL INFORMATION  */
-
-.detail-information {
-  /* border: 1px solid brown; */
-}
 
 .detail-information img {
   height: 6vw;
@@ -164,7 +155,6 @@ aside {
   font-size: 16px;
   line-height: 19px;
   letter-spacing: -0.05em;
-
   color: #444444;
 }
 
@@ -173,19 +163,10 @@ aside {
   font-weight: 500;
   font-size: 8px;
   line-height: 10px;
-  /* identical to box height */
-
   text-align: center;
   letter-spacing: 0.1em;
-
   color: #999999;
 }
-
-
-
-
-
-
 
 .flex {
   display: flex;
@@ -194,7 +175,6 @@ aside {
 
 .item {
   width: 33.33%;
-  /* border: 1px solid rgba(0, 0, 0, 0.8); */
   padding: 20px;
   font-size: 30px;
   text-align: center;
@@ -234,4 +214,5 @@ aside {
     height: auto;
 
   }
+
 }
